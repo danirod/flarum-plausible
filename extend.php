@@ -11,7 +11,9 @@
 
 namespace Danirod\FlarumPlausible;
 
+use Danirod\FlarumPlausible\Listener\SettingsSavingListener;
 use Flarum\Extend;
+use Flarum\Settings\Event\Saving;
 
 return [
     (new Extend\Frontend('forum'))
@@ -19,4 +21,6 @@ return [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
     new Extend\Locales(__DIR__.'/locale'),
+    (new Extend\Event)
+        ->listen(Saving::class, SettingsSavingListener::class),
 ];

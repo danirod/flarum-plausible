@@ -1,5 +1,11 @@
 danirod-plausible:
   admin:
+    validation:
+      domain:
+        required: A domain has to be given
+        regex: The given domain is not valid
+      proxy_domain:
+        regex: The given proxy domain is not valid
     settings:
       enable:
         label: Enabled
