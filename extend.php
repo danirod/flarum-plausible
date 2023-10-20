@@ -14,6 +14,9 @@ namespace Danirod\FlarumPlausible;
 use Danirod\FlarumPlausible\Listener\SettingsSavingListener;
 use Flarum\Extend;
 use Flarum\Settings\Event\Saving;
+use Illuminate\Support\Arr;
+
+$hostname = Utils::getHostname();
 
 return [
     (new Extend\Frontend('forum'))
@@ -23,4 +26,6 @@ return [
     new Extend\Locales(__DIR__.'/locale'),
     (new Extend\Event)
         ->listen(Saving::class, SettingsSavingListener::class),
+    (new Extend\Settings)
+        ->default('danirod-plausible.domain', $hostname),
 ];
