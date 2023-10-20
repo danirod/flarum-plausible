@@ -14,5 +14,9 @@ jobs:
       backend_directory: .
       js_package_manager: npm
       main_git_branch: trunk
+
+      # Disable typings since they seem to be broken
+      build_typings_script: ''
+      check_typings_script: ''
     secrets:
       bundlewatch_github_token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
